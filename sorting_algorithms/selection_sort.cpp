@@ -9,7 +9,7 @@ public:
 void SelectionSort::sort(int* A, int n)
 {
     int min, index;
-    for (int i = 0; i < n; i++)
+    for (int i = 0; i < n - 1; i++)
     {
         min = A[i];
         index = i;
