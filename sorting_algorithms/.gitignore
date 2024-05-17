@@ -33,3 +33,6 @@
 
 # builds
 cmake-build-*/
+
+# vscoe
+.vscode/*
