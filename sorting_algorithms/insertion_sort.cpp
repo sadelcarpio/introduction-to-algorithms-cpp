@@ -2,9 +2,13 @@
 
 class InsertionSort
 {
+private:
+    static int binary_insert(int *A, int key, int p, int r);
+
 public:
     static void sort(int *A, int n);
     static void recursive_sort(int *A, int n);
+    static void sort_with_binary_search(int *A, int n);
 };
 
 void InsertionSort::sort(int *A, int n)
@@ -36,11 +40,36 @@ void InsertionSort::recursive_sort(int *A, int n)
     }
 }
 
+void InsertionSort::sort_with_binary_search(int *A, int n)
+{
+    for (int i = 1; i < n; i++)
+    {
+        int key = A[i];
+        int index = binary_insert(A, key, 0, i);
+        int j = i - 1;
+        while (j >= index)
+        {
+            A[j + 1] = A[j];
+            j--;
+        }
+        A[j + 1] = key;
+    }
+}
+
+int InsertionSort::binary_insert(int *A, int key, int p, int r)
+{
+    int q = (p + r) / 2;
+    if (p >= r) return p;
+    if (key == A[q]) return q;
+    if (key < A[q]) return binary_insert(A, key, p, q);
+    return binary_insert(A, key, q + 1, r);
+}
+
 int main(int argc, char const *argv[])
 {
     int n = 6;
     int *A = new int[n]{5, 2, 4, 6, 1, 3};
-    InsertionSort::recursive_sort(A, n);
+    InsertionSort::sort_with_binary_search(A, n);
     std::cout << "[";
     for (int i = 0; i < n; i++)
     {
