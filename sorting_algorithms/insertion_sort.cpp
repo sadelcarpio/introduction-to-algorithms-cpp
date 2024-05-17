@@ -24,7 +24,7 @@ void InsertionSort::sort(int *A, int n)
 
 void InsertionSort::recursive_sort(int *A, int n)
 {
-    if (n == 0) return;
+    if (n == 1) return;
     recursive_sort(A, n - 1);
     int key = A[n - 1];
     int i = n - 2;
