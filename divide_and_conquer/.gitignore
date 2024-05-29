@@ -34,5 +34,8 @@
 # builds
 cmake-build-*/
 
-# vscoe
+# vscode
 .vscode/*
+
+# idea
+.idea/
